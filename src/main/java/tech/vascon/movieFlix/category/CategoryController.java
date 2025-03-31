@@ -1,5 +1,6 @@
 package tech.vascon.movieFlix.category;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryResponse> save(@RequestBody CategoryRequest request) {
+    public ResponseEntity<CategoryResponse> save(@Valid @RequestBody CategoryRequest request) {
         Category newCategory = CategoryMapper.toCategory(request);
         Category savedCategory = service.save(newCategory);
         return ResponseEntity.status(HttpStatus.CREATED).body(CategoryMapper.toCategoryResponse(savedCategory));

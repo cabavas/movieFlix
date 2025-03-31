@@ -1,7 +1,8 @@
 package tech.vascon.movieFlix.streaming;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 
 @Builder
-public record StreamingRequest(String name) {
+public record StreamingRequest(@NotBlank(message = "Nome do serviço de streaming é obrigatório") String name) {
 }

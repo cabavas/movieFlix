@@ -1,5 +1,6 @@
 package tech.vascon.movieFlix.streaming;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class StreamingController {
     }
 
     @PostMapping
-    public ResponseEntity<StreamingResponse> save(@RequestBody StreamingRequest request) {
+    public ResponseEntity<StreamingResponse> save(@Valid @RequestBody StreamingRequest request) {
         Streaming newStreaming = StreamingMapper.toStreaming(request);
         Streaming savedStreaming = service.save(newStreaming);
         return ResponseEntity.status(HttpStatus.CREATED).body(StreamingMapper.toStreamingResponse(savedStreaming));

@@ -1,4 +1,6 @@
 package tech.vascon.movieFlix.category;
 
-public record CategoryRequest(String name) {
+import jakarta.validation.constraints.NotBlank;
+
+public record CategoryRequest(@NotBlank(message = "Nome da categoria é obrigatório.") String name) {
 }
